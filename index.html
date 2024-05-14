@@ -21,46 +21,32 @@
             align-items: center;
             margin-top: 20px;
         }
-        .coin {
+        .stamp {
             font-size: 2em;
             color: #333;
             margin: 5px;
-        }
-        .hidden {
-            display: none; /* Hide the words */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="coin" id="quarters">0</div>
-        <div class="coin">:</div>
-        <div class="coin hidden" id="dimes">0</div>
-        <div class="coin">:</div>
-        <div class="coin hidden" id="nickels">0</div>
-        <div class="coin">:</div>
-        <div class="coin hidden" id="pennies">0</div>
+        <div class="stamp" id="unixStamp">0000:0:00:000</div>
     </div>
 
     <script>
-        function updateCoins() {
+        function updateUnixStamp() {
             const timestamp = Math.floor(Date.now() / 1000).toString();
-            const quarters = timestamp.slice(0, 4); // First four digits
-            const pennies = timestamp.slice(-3);    // Last three digits
+            const firstFourDigits = timestamp.slice(0, 4);
+            const oneDigit = timestamp.slice(4, 5);
+            const twoDigits = timestamp.slice(5, 7);
+            const threeDigits = timestamp.slice(7);
 
-            // Remaining digits for dimes and nickels
-            const remainingDigits = timestamp.slice(4, -3);
-            const dimes = remainingDigits.slice(0, 1);
-            const nickels = remainingDigits.slice(1);
-
-            document.getElementById("quarters").textContent = quarters;
-            document.getElementById("dimes").textContent = dimes;
-            document.getElementById("nickels").textContent = nickels;
-            document.getElementById("pennies").textContent = pennies;
+            const formattedStamp = `${firstFourDigits}:${oneDigit}:${twoDigits}:${threeDigits}`;
+            document.getElementById("unixStamp").textContent = formattedStamp;
         }
 
-        setInterval(updateCoins, 1000);
-        updateCoins(); // Initial call to display coin counts immediately
+        setInterval(updateUnixStamp, 1000);
+        updateUnixStamp(); // Initial call to display Unix timestamp immediately
     </script>
 </body>
 </html>
