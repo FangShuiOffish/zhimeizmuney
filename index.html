@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Counter</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            flex-direction: column;
+        }
+        .coin {
+            font-size: 2em;
+            color: #333;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="coin" id="quarters">Quarters: 0</div>
+    <div class="coin" id="dimes">Dimes: 0</div>
+    <div class="coin" id="nickels">Nickels: 0</div>
+    <div class="coin" id="pennies">Pennies: 0</div>
+
+    <script>
+        function updateCoins() {
+            const quartersDiv = document.getElementById('quarters');
+            const dimesDiv = document.getElementById('dimes');
+            const nickelsDiv = document.getElementById('nickels');
+            const penniesDiv = document.getElementById('pennies');
+
+            const quartersCount = Math.floor(Math.random() * 100);
+            const dimesCount = Math.floor(Math.random() * 100);
+            const nickelsCount = Math.floor(Math.random() * 100);
+            const penniesCount = Math.floor(Math.random() * 100);
+
+            quartersDiv.textContent = `Quarters: ${quartersCount}`;
+            dimesDiv.textContent = `Dimes: ${dimesCount}`;
+            nickelsDiv.textContent = `Nickels: ${nickelsCount}`;
+            penniesDiv.textContent = `Pennies: ${penniesCount}`;
+        }
+
+        setInterval(updateCoins, 1000);
+        updateCoins(); // Initial call to display coin counts immediately
+    </script>
+</body>
+</html>
