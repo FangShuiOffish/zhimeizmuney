@@ -12,7 +12,7 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #ff1987;
             padding: 20px;
         }
         .coin {
@@ -29,25 +29,19 @@
     <div class="coin" id="pennies">Pennies: 0</div>
 
     <script>
-        function updateCoins() {
-            const quartersDiv = document.getElementById('quarters');
-            const dimesDiv = document.getElementById('dimes');
-            const nickelsDiv = document.getElementById('nickels');
-            const penniesDiv = document.getElementById('pennies');
-
-            const quartersCount = Math.floor(Math.random() * 100);
-            const dimesCount = Math.floor(Math.random() * 100);
-            const nickelsCount = Math.floor(Math.random() * 100);
-            const penniesCount = Math.floor(Math.random() * 100);
-
-            quartersDiv.textContent = `Quarters: ${quartersCount}`;
-            dimesDiv.textContent = `Dimes: ${dimesCount}`;
-            nickelsDiv.textContent = `Nickels: ${nickelsCount}`;
-            penniesDiv.textContent = `Pennies: ${penniesCount}`;
-        }
-
-        setInterval(updateCoins, 1000);
-        updateCoins(); // Initial call to display coin counts immediately
+        setInterval(function (){
+            var change = date.now
+            var quarters = math.floor(change / 1000000000)
+            change = change - quarters * 1000000000
+            var dimes = math.floor(change / 1000000000)
+            change = change - dimes * 1000000000
+            var nickles = math.floor(change / 1000000000)
+            change = change - dimes * 1000000000
+            var pennies = math.floor(change / 1000000000)
+            change = change - dimes * 1000000000
+            document.getelementById("klox").innerHTML = ${quarters}:${dimes}:${nickles}:${pennies} ; 
+        },1000);
+           
     </script>
 </body>
 </html>
