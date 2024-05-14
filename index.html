@@ -33,11 +33,13 @@
 </head>
 <body>
     <div class="container">
-        <div class="coin" id="timestamp">Timestamp: 0</div>
-        <div class="coin hidden">Quarters: 0</div>
-        <div class="coin hidden">Dimes: 0</div>
-        <div class="coin hidden">Nickels: 0</div>
-        <div class="coin hidden">Pennies: 0</div>
+        <div class="coin" id="quarters">0</div>
+        <div class="coin hidden">:</div>
+        <div class="coin hidden" id="dimes">0</div>
+        <div class="coin">:</div>
+        <div class="coin hidden" id="nickels">0</div>
+        <div class="coin">:</div>
+        <div class="coin hidden" id="pennies">0</div>
     </div>
 
     <script>
@@ -51,11 +53,10 @@
             const dimes = remainingDigits.slice(0, 1);
             const nickels = remainingDigits.slice(1);
 
-            document.getElementById("timestamp").textContent = `Timestamp: ${timestamp}`;
-            document.getElementsByClassName("hidden")[0].textContent = `Quarters: ${quarters}`;
-            document.getElementsByClassName("hidden")[1].textContent = `Dimes: ${dimes}`;
-            document.getElementsByClassName("hidden")[2].textContent = `Nickels: ${nickels}`;
-            document.getElementsByClassName("hidden")[3].textContent = `Pennies: ${pennies}`;
+            document.getElementById("quarters").textContent = quarters;
+            document.getElementById("dimes").textContent = dimes;
+            document.getElementById("nickels").textContent = nickels;
+            document.getElementById("pennies").textContent = pennies;
         }
 
         setInterval(updateCoins, 1000);
