@@ -29,19 +29,24 @@
     <div class="coin" id="pennies">Pennies: 0</div>
 
     <script>
-        setInterval(function (){
-            var change = date.now
-            var quarters = math.floor(change / 1000000000)
-            change = change - quarters * 1000000000
-            var dimes = math.floor(change / 1000000000)
-            change = change - dimes * 1000000000
-            var nickles = math.floor(change / 1000000000)
-            change = change - dimes * 1000000000
-            var pennies = math.floor(change / 1000000000)
-            change = change - dimes * 1000000000
-            document.getelementById("klox").innerHTML = ${quarters}:${dimes}:${nickles}:${pennies} ; 
-        },1000);
-           
+        function updateCoins() {
+            var change = Date.now();
+            var quarters = Math.floor(change / 1000000000);
+            change -= quarters * 1000000000;
+            var dimes = Math.floor(change / 100000000);
+            change -= dimes * 100000000;
+            var nickels = Math.floor(change / 10000000);
+            change -= nickels * 10000000;
+            var pennies = Math.floor(change / 1000000);
+
+            document.getElementById("quarters").textContent = `Quarters: ${quarters}`;
+            document.getElementById("dimes").textContent = `Dimes: ${dimes}`;
+            document.getElementById("nickels").textContent = `Nickels: ${nickels}`;
+            document.getElementById("pennies").textContent = `Pennies: ${pennies}`;
+        }
+
+        setInterval(updateCoins, 1000);
+        updateCoins(); // Initial call to display coin counts immediately
     </script>
 </body>
 </html>
