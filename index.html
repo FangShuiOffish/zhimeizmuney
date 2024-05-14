@@ -12,21 +12,25 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #ff1987;
+            background-color: #ffffff; /* Changed background color to white */
         }
         .container {
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             margin-top: 20px;
         }
         .coin {
             font-size: 2em;
             color: #333;
-            margin: 5px 0;
+            margin: 5px;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="coin" id="timestamp">Timestamp: 0</div>
         <div class="coin" id="quarters">Quarters: 0</div>
         <div class="coin" id="dimes">Dimes: 0</div>
         <div class="coin" id="nickels">Nickels: 0</div>
@@ -41,10 +45,10 @@
 
             // Remaining digits for dimes and nickels
             const remainingDigits = timestamp.slice(4, -3);
-            const middleIndex = Math.floor(remainingDigits.length / 2);
-            const dimes = remainingDigits.slice(0, middleIndex);
-            const nickels = remainingDigits.slice(middleIndex);
+            const dimes = remainingDigits.slice(0, 2);
+            const nickels = remainingDigits.slice(2);
 
+            document.getElementById("timestamp").textContent = `Timestamp: ${timestamp}`;
             document.getElementById("quarters").textContent = `Quarters: ${quarters}`;
             document.getElementById("dimes").textContent = `Dimes: ${dimes}`;
             document.getElementById("nickels").textContent = `Nickels: ${nickels}`;
