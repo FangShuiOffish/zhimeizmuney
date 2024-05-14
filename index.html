@@ -7,37 +7,43 @@
     <style>
         body {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: flex-start;
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #ff1987;
-            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            margin-top: 20px;
         }
         .coin {
             font-size: 2em;
             color: #333;
-            margin: 10px 0;
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
-    <div class="coin" id="quarters">Quarters: 0</div>
-    <div class="coin" id="dimes">Dimes: 0</div>
-    <div class="coin" id="nickels">Nickels: 0</div>
-    <div class="coin" id="pennies">Pennies: 0</div>
+    <div class="container">
+        <div class="coin" id="quarters">Quarters: 0</div>
+        <div class="coin" id="dimes">Dimes: 0</div>
+        <div class="coin" id="nickels">Nickels: 0</div>
+        <div class="coin" id="pennies">Pennies: 0</div>
+    </div>
 
     <script>
         function updateCoins() {
-            var change = Date.now();
-            var quarters = Math.floor(change / 1000000000);
-            change -= quarters * 1000000000;
-            var dimes = Math.floor(change / 100000000);
-            change -= dimes * 100000000;
-            var nickels = Math.floor(change / 10000000);
-            change -= nickels * 10000000;
-            var pennies = Math.floor(change / 1000000);
+            const timestamp = Math.floor(Date.now() / 1000).toString();
+            const quarters = timestamp.slice(0, 4); // First four digits
+            const pennies = timestamp.slice(-3);    // Last three digits
+
+            // Remaining digits for dimes and nickels
+            const remainingDigits = timestamp.slice(4, -3);
+            const middleIndex = Math.floor(remainingDigits.length / 2);
+            const dimes = remainingDigits.slice(0, middleIndex);
+            const nickels = remainingDigits.slice(middleIndex);
 
             document.getElementById("quarters").textContent = `Quarters: ${quarters}`;
             document.getElementById("dimes").textContent = `Dimes: ${dimes}`;
